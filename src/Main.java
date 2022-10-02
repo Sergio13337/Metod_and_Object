@@ -16,6 +16,6 @@ public class Main {
         System.out.println("nameSurname.nameAuthor = " + nameSurname.getNameAuthor());
         System.out.println("nameSurname.surname = " + nameSurname.getSurname());
 
-
+//
     }
 }
