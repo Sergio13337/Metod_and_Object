@@ -1,18 +1,20 @@
+import java.util.Objects;
+
 class Book {
     private String nameBook;
     private int publicationYear;
-    private Integer id;
+
 
 
     //private String author;
     private final Author author;
 
 
-    public Book(String namebook, int publicationYear, Author author, Integer id) {
+    public Book(String namebook, int publicationYear, Author author) {
         this.nameBook = namebook;
         this.publicationYear = publicationYear;
         this.author = author;
-        this.id = id;
+
     }
     @Override
     public String toString() {
@@ -23,17 +25,18 @@ class Book {
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-       Book author = (Book) other;
-        return id.equals(author.id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return publicationYear == book.publicationYear && nameBook.equals(book.nameBook)  && Objects.equals(author, book.author);
     }
+
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(id);
+        return Objects.hash(nameBook, publicationYear, author);
     }
+
     public String getNameBook() {
         return this.nameBook;
     }
