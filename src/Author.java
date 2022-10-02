@@ -3,12 +3,12 @@ import java.util.Objects;
 public class Author {
     private String nameAuthor;
     private String surname;
-    private Integer id;
 
-    public Author(String name, String surname, Integer id) {
+
+    public Author(String name, String surname) {
         this.nameAuthor = name;
         this.surname = surname;
-        this.id = id;
+
     }
 
     @Override
@@ -18,17 +18,18 @@ public class Author {
 
 
     }
+
     @Override
-    public boolean equals(Object other) {
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-        Author nameAuthor = (Author) other;
-        return id.equals(nameAuthor.id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return nameAuthor.equals(author.nameAuthor) && surname.equals(author.surname);
     }
+
     @Override
-     public int hashCode () {
-        return java.util.Objects.hash(id);
+    public int hashCode() {
+        return Objects.hash(nameAuthor, surname);
     }
 
     public String getNameAuthor() {
